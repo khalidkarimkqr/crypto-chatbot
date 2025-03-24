@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^1.3.0",
     "@t3-oss/env-nextjs": "^0.12.0",
+    "ai": "^4.2.1",
+    "binance": "^2.15.14",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.483.0",
