@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 
 export default function Home() {
   const form = useForm();
-  const { formRef } = useEnterSubmit();
+  const { formRef, onKeyDown } = useEnterSubmit();
   const onSubmit = () => {};
   return (
     <main>
@@ -16,7 +16,11 @@ export default function Home() {
         <ChatScrollAnchor />
       </div>
       <div className="">
-        <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)}></form>
+        <form ref={formRef} onSubmit={form.handleSubmit(onSubmit)}>
+          <div className="relative flex flex-col w-full overflow-hidden max-h-60 grow bg-background sm:rounded-md sm:border">
+            <h1>Hello this is a chat box</h1>
+          </div>
+        </form>
       </div>
     </main>
   );
