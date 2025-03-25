@@ -9,7 +9,10 @@ import TextareaAutosize from "react-textarea-autosize";
 export default function Home() {
   const form = useForm();
   const { formRef, onKeyDown } = useEnterSubmit();
-  const onSubmit = () => {};
+  const onSubmit = (data: any) => {
+    console.log({ data });
+  };
+
   return (
     <main>
       <div className="pb-[200px] pt-4 md:pt-10">
@@ -29,7 +32,18 @@ export default function Home() {
               autoComplete="off"
               autoCorrect="off"
               rows={1}
+              {...form.register("message")}
             />
+            <div className="absolute right-0 top-4 sm:right-4">
+              {/* <Button
+                    type="submit"
+                    size="icon"
+                    disabled={form.watch('message') === ''}
+                  >
+                    <ArrowDownIcon className="w-5 h-5" />
+                    <span className="sr-only">Send message</span>
+                  </Button> */}
+            </div>
           </div>
         </form>
       </div>
