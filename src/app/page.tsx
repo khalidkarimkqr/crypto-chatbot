@@ -5,6 +5,8 @@ import ChatScrollAnchor from "@/components/chat-scroll-anchor";
 import { useEnterSubmit } from "@/lib/use-enter-submit";
 import { useForm } from "react-hook-form";
 import TextareaAutosize from "react-textarea-autosize";
+import { Button } from "@/components/ui/button";
+import { ArrowDownIcon, PlusIcon } from "lucide-react";
 
 export default function Home() {
   const form = useForm();
@@ -35,14 +37,14 @@ export default function Home() {
               {...form.register("message")}
             />
             <div className="absolute right-0 top-4 sm:right-4">
-              {/* <Button
-                    type="submit"
-                    size="icon"
-                    disabled={form.watch('message') === ''}
-                  >
-                    <ArrowDownIcon className="w-5 h-5" />
-                    <span className="sr-only">Send message</span>
-                  </Button> */}
+              <Button
+                type="submit"
+                size="icon"
+                disabled={form.watch("message") === ""}
+              >
+                <ArrowDownIcon className="w-5 h-5" />
+                <span className="sr-only">Send message</span>
+              </Button>
             </div>
           </div>
         </form>
