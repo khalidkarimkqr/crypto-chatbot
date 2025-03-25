@@ -48,6 +48,19 @@ export default function Home() {
             </div>
           </div>
         </form>
+
+        <Button
+          variant="outline"
+          size="lg"
+          className="p-4 mt-4 rounded-full bg-background"
+          onClick={(e) => {
+            e.preventDefault();
+            window.location.reload();
+          }}
+        >
+          <PlusIcon className="w-5 h-5" />
+          <span>New Chat</span>
+        </Button>
       </div>
     </main>
   );
