@@ -29,7 +29,7 @@ export const sendMessage = async (
   role: "user" | "assistant";
   display: ReactNode;
 }> => {
-  const history = getMutableAIState();
+  const history = getMutableAIState<typeof AI>();
 
   history.update([
     ...history.get(),
