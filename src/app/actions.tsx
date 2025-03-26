@@ -30,6 +30,15 @@ export const sendMessage = async (
   display: ReactNode;
 }> => {
   const history = getMutableAIState();
+
+  history.update([
+    ...history.get(),
+    {
+      role: "user",
+      content: message,
+    },
+  ]);
+
   return {
     id: Date.now(),
     role: "assistant",
