@@ -11,6 +11,7 @@ import { z } from "zod";
 import { useActions, useUIState } from "ai/rsc";
 import type { AI } from "./actions";
 import { sendMessage } from "./actions";
+import { UserMessage } from "@/components/llm/message";
 
 const chatSchema = z.object({
   message: z.string().min(1, "Message is required"),
@@ -24,18 +25,17 @@ export default function Home() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { sendMessage } = useActions<typeof AI>();
 
-
   const onSubmit: SubmitHandler<ChatInput> = (data) => {
     const value = data.message.trim();
     formRef.current?.reset();
     if (!value) return;
 
-    setMessages(currentMessages => [
+    setMessages((currentMessages) => [
       ...currentMessages,
       {
         id: Date.now(),
         role: "user",
-        display:,
+        display: <UserMessage>{value}</UserMessage>,
       },
     ]);
   };
