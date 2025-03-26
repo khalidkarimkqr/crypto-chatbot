@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <main>
       <div className="pb-[200px] pt-4 md:pt-10">
-        <ChatList messages={[]} />
+        <ChatList messages={messages} />
         <ChatScrollAnchor />
       </div>
       <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-muted/90 from-0% to-muted/90 to-50% peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
