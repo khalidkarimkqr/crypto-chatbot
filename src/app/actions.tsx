@@ -1,9 +1,8 @@
 "use server";
 
-import type {ToolInvocation} from "ai";
-import {createAI} from 'ai/rsc';
-import type {ReactNode} from "react";
-
+import type { ToolInvocation } from "ai";
+import { createAI } from "ai/rsc";
+import type { ReactNode } from "react";
 
 // This is the system message we send to the LLM to instantiate it
 // this gives the LLM the context for the tool calling
@@ -21,29 +20,28 @@ If the user wants a stock price, it is an impossible task, so you should respond
 If the user wants to do anything else, it is an impossible task, so you should respond that you are a demo and cannot do that.
 
 
-`
+`;
 
-export const sendMessage = async () =>{
-
-};
+export const sendMessage = async () => {};
 
 export type AIState = Array<{
-    id?: number;
-    name?: "get_crypto_price" | "get_cryto_stats";
-    role : "user" | "assistant" | "system";
-    content: string;
-}>
-
+  id?: number;
+  name?: "get_crypto_price" | "get_cryto_stats";
+  role: "user" | "assistant" | "system";
+  content: string;
+}>;
 
 export type UIState = Array<{
-    id: number;
-    role: 'user' | 'assistant';
-    display: ReactNode;
-    toolInvocations?: ToolInvocation[];
-}>
+  id: number;
+  role: "user" | "assistant";
+  display: ReactNode;
+  toolInvocations?: ToolInvocation[];
+}>;
 
 export const AI = createAI({
-    initialAIState: [] as AIState,
-    initialUIState: [] as UIState,
-    actions: {}
-})
+  initialAIState: [] as AIState,
+  initialUIState: [] as UIState,
+  actions: {
+    sendMessage,
+  },
+});
