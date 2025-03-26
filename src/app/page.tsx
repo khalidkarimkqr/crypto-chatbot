@@ -3,16 +3,26 @@
 import { ChatList } from "@/components/chat-list";
 import ChatScrollAnchor from "@/components/chat-scroll-anchor";
 import { useEnterSubmit } from "@/lib/use-enter-submit";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import TextareaAutosize from "react-textarea-autosize";
 import { Button } from "@/components/ui/button";
 import { ArrowDownIcon, PlusIcon } from "lucide-react";
+import { z } from "zod";
+
+const chatSchema = z.object({
+  message: z.string().min(1, "Message is required"),
+});
+
+export type ChatInput = z.infer<typeof chatSchema>;
 
 export default function Home() {
-  const form = useForm();
+  const form = useForm<ChatInput>();
   const { formRef, onKeyDown } = useEnterSubmit();
-  const onSubmit = (data: any) => {
-    console.log({ data });
+
+  const onSubmit: SubmitHandler<ChatInput> = (data) => {
+    const value = data.message.trim();
+    formRef.current?.reset();
+    if (!value) return;
   };
 
   return (
