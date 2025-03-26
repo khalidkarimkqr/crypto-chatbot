@@ -8,6 +8,8 @@ import TextareaAutosize from "react-textarea-autosize";
 import { Button } from "@/components/ui/button";
 import { ArrowDownIcon, PlusIcon } from "lucide-react";
 import { z } from "zod";
+import { useUIState } from "ai/rsc";
+import type { AI } from "./actions";
 
 const chatSchema = z.object({
   message: z.string().min(1, "Message is required"),
@@ -18,6 +20,7 @@ export type ChatInput = z.infer<typeof chatSchema>;
 export default function Home() {
   const form = useForm<ChatInput>();
   const { formRef, onKeyDown } = useEnterSubmit();
+  const [messages, setMessages] = useUIState<typeof AI>();
 
   const onSubmit: SubmitHandler<ChatInput> = (data) => {
     const value = data.message.trim();
