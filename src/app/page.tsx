@@ -25,7 +25,7 @@ export default function Home() {
   const [messages, setMessages] = useUIState<typeof AI>();
   const { sendMessage } = useActions<typeof AI>();
 
-  const onSubmit: SubmitHandler<ChatInput> = (data) => {
+  const onSubmit: SubmitHandler<ChatInput> = async (data) => {
     const value = data.message.trim();
     formRef.current?.reset();
     if (!value) return;
@@ -38,6 +38,15 @@ export default function Home() {
         display: <UserMessage>{value}</UserMessage>,
       },
     ]);
+
+    try {
+      // Submit and get response message
+      const responseMessage = await sendMessage(value);
+      setMessages((currentMessages) => [...currentMessages, responseMessage]);
+    } catch (error) {
+      // You may want to show a toast or trigger an error state.
+      console.error(error);
+    }
   };
 
   return (
