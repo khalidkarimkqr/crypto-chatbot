@@ -55,3 +55,12 @@ export function BotCard({
     </div>
   );
 }
+
+export function AssistantMessage({ children }: { children: React.ReactNode }) {
+  return (
+    <div
+      className={
+        "mt-2 flex items-center justify-center gap-2 text-xs text-gray-500"
+      }
+    >
+     
