@@ -40,11 +40,9 @@ export default function Home() {
     ]);
 
     try {
-      // Submit and get response message
       const responseMessage = await sendMessage(value);
       setMessages((currentMessages) => [...currentMessages, responseMessage]);
     } catch (error) {
-      // You may want to show a toast or trigger an error state.
       console.error(error);
     }
   };

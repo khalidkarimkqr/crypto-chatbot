@@ -22,7 +22,19 @@ If the user wants to do anything else, it is an impossible task, so you should r
 
 `;
 
-export const sendMessage = async () => {};
+export const sendMessage = async (
+  message: string
+): Promise<{
+  id: number;
+  role: "user" | "assistant";
+  display: ReactNode;
+}> => {
+  return {
+    id: Date.now(),
+    role: "assistant",
+    display: <p>Hello!</p>,
+  };
+};
 
 export type AIState = Array<{
   id?: number;
