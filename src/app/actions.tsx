@@ -1,7 +1,7 @@
 "use server";
 
 import type { ToolInvocation } from "ai";
-import { createAI } from "ai/rsc";
+import { createAI, getMutableAIState } from "ai/rsc";
 import type { ReactNode } from "react";
 
 // This is the system message we send to the LLM to instantiate it
@@ -29,6 +29,7 @@ export const sendMessage = async (
   role: "user" | "assistant";
   display: ReactNode;
 }> => {
+  const history = getMutableAIState();
   return {
     id: Date.now(),
     role: "assistant",
