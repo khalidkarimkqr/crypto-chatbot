@@ -57,6 +57,12 @@ export const sendMessage = async (
         <Loader2 className="h-5 w-5 animate-spin stroke-zinc-900" />
       </BotMessage>
     ),
+    text: ({ content, done }) => {
+      if (done)
+        history.done([...history.get(), { role: "assistant", content }]);
+
+      return <BotMessage>{content}</BotMessage>;
+    },
   });
 
   return {
