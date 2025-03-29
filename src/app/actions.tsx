@@ -1,6 +1,6 @@
 "use server";
 
-import type { ToolInvocation } from "ai";
+import type { CoreMessage, ToolInvocation } from "ai";
 import { createAI, getMutableAIState } from "ai/rsc";
 import type { ReactNode } from "react";
 import { openai } from "@ai-sdk/openai";
@@ -42,7 +42,14 @@ export const sendMessage = async (
 
   const reply = await streamUI({
     model: openai("gpt-4o-2024-05-13"),
-    messages: [],
+    messages: [
+      {
+        role: "system",
+        content,
+        toolInvocations: [],
+      },
+      ...history.get(),
+    ] as CoreMessage[],
   });
 
   return {
