@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import { openai } from "@ai-sdk/openai";
 import { BotMessage } from "@/components/llm/message";
 import { Loader2 } from "lucide-react";
+import { z } from "zod";
 
 // This is the system message we send to the LLM to instantiate it
 // this gives the LLM the context for the tool calling
@@ -64,7 +65,19 @@ export const sendMessage = async (
       return <BotMessage>{content}</BotMessage>;
     },
 
-    tools: {},
+    tools: {
+      get_crypto_price: {
+        description:
+          "Get the current price of a given cryptocurrency. Use this to show the price to the user.",
+        parameters: z.object({
+          symbol: z
+            .string()
+            .describe(
+              "The name or symbol of the cryptocurrency. e.g. BTC/ETH/SOL."
+            ),
+        }),
+      },
+    },
   });
 
   return {
