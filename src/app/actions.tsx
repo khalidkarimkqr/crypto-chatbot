@@ -4,6 +4,8 @@ import type { CoreMessage, ToolInvocation } from "ai";
 import { createAI, getMutableAIState, streamUI } from "ai/rsc";
 import type { ReactNode } from "react";
 import { openai } from "@ai-sdk/openai";
+import { BotMessage } from "@/components/llm/message";
+import { Loader2 } from "lucide-react";
 
 // This is the system message we send to the LLM to instantiate it
 // this gives the LLM the context for the tool calling
@@ -50,6 +52,11 @@ export const sendMessage = async (
       },
       ...history.get(),
     ] as CoreMessage[],
+    initial: (
+      <BotMessage className="items-center flex shrink-0 select-none justify-center">
+        <Loader2 className="h-5 w-5 animate-spin stroke-zinc-900" />
+      </BotMessage>
+    ),
   });
 
   return {
