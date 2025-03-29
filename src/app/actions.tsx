@@ -58,11 +58,13 @@ export const sendMessage = async (
       </BotMessage>
     ),
     text: ({ content, done }) => {
-      if (done)
+      if (done) {
         history.done([...history.get(), { role: "assistant", content }]);
-
+      }
       return <BotMessage>{content}</BotMessage>;
     },
+
+    tools: {},
   });
 
   return {
