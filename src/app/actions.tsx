@@ -11,6 +11,8 @@ import { z } from "zod";
 
 import KrakenClient from "kraken-api";
 
+const kraken = new KrakenClient(env.KRAKEN_API_KEY, env.KRAKEN_API_SECRET);
+
 // import { PriceSkeleton } from "@components/llm-crypto/price-skeleton";
 //
 // This is the system message we send to the LLM to instantiate it
