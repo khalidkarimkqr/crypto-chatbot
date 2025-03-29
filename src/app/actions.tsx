@@ -77,6 +77,17 @@ export const sendMessage = async (
             ),
         }),
       },
+      get_crypto_stats: {
+        description:
+          "Get the current stats of a given cryptocurrency. Use this to show the stats to the user.",
+        parameters: z.object({
+          slug: z
+            .string()
+            .describe(
+              "The name of the cryptocurrency in lowercase. e.g. bitcoin/ethereum/solana."
+            ),
+        }),
+      },
     },
   });
 
