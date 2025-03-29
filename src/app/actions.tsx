@@ -45,7 +45,7 @@ export const sendMessage = async (
   ]);
 
   const reply = await streamUI({
-    model: openai("gpt-4o-2024-05-13"),
+    model: openai("gpt-4o"),
     messages: [
       {
         role: "system",
@@ -80,7 +80,7 @@ export const sendMessage = async (
             ),
         }),
         generate: async function* ({ symbol }: { symbol: string }) {
-          console.log(symbol);
+          console.log({ symbol });
           yield <BotCard>Loading...</BotCard>;
 
           return null;
