@@ -1,12 +1,15 @@
 "use server";
 
 import type { CoreMessage, ToolInvocation } from "ai";
+import { env } from "@/env";
 import { createAI, getMutableAIState, streamUI } from "ai/rsc";
 import type { ReactNode } from "react";
 import { openai } from "@ai-sdk/openai";
 import { BotCard, BotMessage } from "@/components/llm/message";
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
+
+import KrakenClient from "kraken-api";
 
 // import { PriceSkeleton } from "@components/llm-crypto/price-skeleton";
 //
