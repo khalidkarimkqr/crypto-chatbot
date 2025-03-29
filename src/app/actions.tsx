@@ -3,6 +3,7 @@
 import type { ToolInvocation } from "ai";
 import { createAI, getMutableAIState } from "ai/rsc";
 import type { ReactNode } from "react";
+import { openai } from "@ai-sdk/openai";
 
 // This is the system message we send to the LLM to instantiate it
 // this gives the LLM the context for the tool calling
@@ -38,6 +39,11 @@ export const sendMessage = async (
       content: message,
     },
   ]);
+
+  const reply = await streamUI({
+    model: openai("gpt-4o-2024-05-13"),
+    messages: [],
+  });
 
   return {
     id: Date.now(),
