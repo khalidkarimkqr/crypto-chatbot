@@ -7,6 +7,7 @@ import { openai } from "@ai-sdk/openai";
 import { BotCard, BotMessage } from "@/components/llm/message";
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
+
 // import { PriceSkeleton } from "@components/llm-crypto/price-skeleton";
 //
 // This is the system message we send to the LLM to instantiate it
