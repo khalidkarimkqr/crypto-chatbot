@@ -4,9 +4,10 @@ import type { CoreMessage, ToolInvocation } from "ai";
 import { createAI, getMutableAIState, streamUI } from "ai/rsc";
 import type { ReactNode } from "react";
 import { openai } from "@ai-sdk/openai";
-import { BotMessage } from "@/components/llm/message";
+import { BotCard, BotMessage } from "@/components/llm/message";
 import { Loader2 } from "lucide-react";
 import { z } from "zod";
+import { PriceSkeleton } from "@components/llm-crypto/price-skeleton";
 
 // This is the system message we send to the LLM to instantiate it
 // this gives the LLM the context for the tool calling
@@ -65,6 +66,8 @@ export const sendMessage = async (
       return <BotMessage>{content}</BotMessage>;
     },
 
+    temperature: 0,
+
     tools: {
       get_crypto_price: {
         description:
@@ -76,6 +79,15 @@ export const sendMessage = async (
               "The name or symbol of the cryptocurrency. e.g. BTC/ETH/SOL."
             ),
         }),
+        generate: async function* ({ symbol }: { symbol: string }) {
+          yield (
+            <BotCard>
+              <PriceSkeleton />
+            </BotCard>
+          );
+
+          return null;
+        },
       },
       get_crypto_stats: {
         description:
@@ -94,7 +106,7 @@ export const sendMessage = async (
   return {
     id: Date.now(),
     role: "assistant",
-    display: <p>Hello!</p>,
+    display: reply.value,
   };
 };
 
