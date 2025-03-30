@@ -12,6 +12,7 @@ import { useActions, useUIState } from "ai/rsc";
 import type { AI } from "./actions";
 import { sendMessage } from "./actions";
 import { UserMessage } from "@/components/llm/message";
+import CryptoPriceCard from "@/components/price";
 
 const chatSchema = z.object({
   message: z.string().min(1, "Message is required"),
@@ -51,6 +52,12 @@ export default function Home() {
     <main>
       <div className="pb-[200px] pt-4 md:pt-10">
         <ChatList messages={messages} />
+        <CryptoPriceCard
+          symbol={""}
+          price={0}
+          closeDate={undefined}
+          percentageChange={0}
+        />
         <ChatScrollAnchor />
       </div>
       <div className="fixed inset-x-0 bottom-0 w-full bg-gradient-to-b from-muted/90 from-0% to-muted/90 to-50% peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
