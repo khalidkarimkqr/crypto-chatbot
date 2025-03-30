@@ -12,6 +12,7 @@ import { z } from "zod";
 import KrakenClient from "kraken-api";
 import { sleep } from "@/lib/utils";
 import CryptoPriceCard from "@/components/llm/price";
+import PriceSkeleton from "@/components/llm/price-skeleton";
 
 const kraken = new KrakenClient(env.KRAKEN_API_KEY, env.KRAKEN_API_SECRET);
 
@@ -89,7 +90,11 @@ export const sendMessage = async (
         }),
         generate: async function* ({ symbol }: { symbol: string }) {
           console.log({ symbol });
-          yield <BotCard>Loading...</BotCard>;
+          yield (
+            <BotCard>
+              <PriceSkeleton />
+            </BotCard>
+          );
 
           const url = `https://api.kraken.com/0/public/Ticker?pair=${symbol}USDT`;
           const response = await fetch(url);
