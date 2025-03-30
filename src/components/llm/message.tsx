@@ -49,7 +49,7 @@ export function BotCard({
           !showAvatar && "invisible"
         )}
       >
-        <Sparkle />
+        <Sparkle fill="white" />
       </div>
       <div className="ml-4 flex-1 px-1">{children}</div>
     </div>
