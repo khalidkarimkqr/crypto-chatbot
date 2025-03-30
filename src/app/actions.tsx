@@ -11,6 +11,7 @@ import { z } from "zod";
 
 import KrakenClient from "kraken-api";
 import { sleep } from "@/lib/utils";
+import CryptoPriceCard from "@/components/price";
 
 const kraken = new KrakenClient(env.KRAKEN_API_KEY, env.KRAKEN_API_SECRET);
 
@@ -101,7 +102,7 @@ export const sendMessage = async (
           // Parse the last price and opening price
           const lastPrice = Number(pairData.c[0]); // 'c' is the last trade closed price
           const openingPrice = Number(pairData.o); // 'o' is the opening price
-          const delta = (lastPrice - openingPrice).toFixed(2);
+          const delta = Number((lastPrice - openingPrice).toFixed(2));
 
           await sleep(1000);
 
@@ -117,7 +118,12 @@ export const sendMessage = async (
 
           return (
             <BotCard>
-              {lastPrice}, {delta}
+              <CryptoPriceCard
+                symbol={symbol}
+                price={lastPrice}
+                delta={delta}
+                closeDate={new Date()}
+              />
             </BotCard>
           );
 
