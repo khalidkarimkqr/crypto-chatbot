@@ -1,23 +1,22 @@
-import { ArrowDownIcon, ArrowUpIcon } from "lucide-react";
+// import { ArrowDownIcon, ArrowUpIcon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { formatPrice } from "@/lib/format-price";
 
 interface CryptoPriceCardProps {
   symbol: string;
   price: number;
   closeDate: Date;
-  percentageChange: number;
-  currency?: string;
+  delta: number;
 }
 
 export default function CryptoPriceCard({
   symbol = "BTC",
   price = 63842.51,
   closeDate = new Date(),
-  percentageChange = 2.34,
-  currency = "$",
+  delta = 5330.0,
 }: CryptoPriceCardProps) {
-  const isPositive = percentageChange >= 0;
+  const isPositive = delta >= 0;
   const formattedDate = closeDate.toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -34,13 +33,7 @@ export default function CryptoPriceCard({
         <div className="flex justify-between items-start">
           <div className="space-y-2">
             <div className="text-xl font-bold">{symbol}</div>
-            <div className="text-3xl font-bold">
-              {currency}
-              {price.toLocaleString(undefined, {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2,
-              })}
-            </div>
+            <div className="text-3xl font-bold">{formatPrice(price)}</div>
             <div className="text-sm text-muted-foreground">
               {formattedDate} at {formattedTime}
             </div>
@@ -53,13 +46,7 @@ export default function CryptoPriceCard({
                 : "bg-red-100 text-red-800"
             )}
           >
-            {isPositive ? (
-              <ArrowUpIcon className="w-3 h-3 mr-1" />
-            ) : (
-              <ArrowDownIcon className="w-3 h-3 mr-1" />
-            )}
-            {isPositive ? "+" : ""}
-            {percentageChange.toFixed(2)}%
+            {`${delta > 0 ? "+" : ""}${((delta / price) * 100).toFixed(2)}%`}
           </div>
         </div>
       </CardContent>
