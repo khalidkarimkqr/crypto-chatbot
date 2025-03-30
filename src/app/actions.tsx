@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import KrakenClient from "kraken-api";
 import { sleep } from "@/lib/utils";
-import CryptoPriceCard from "@/components/price";
+import CryptoPriceCard from "@/components/llm/price";
 
 const kraken = new KrakenClient(env.KRAKEN_API_KEY, env.KRAKEN_API_SECRET);
 

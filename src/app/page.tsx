@@ -12,7 +12,7 @@ import { useActions, useUIState } from "ai/rsc";
 import type { AI } from "./actions";
 import { sendMessage } from "./actions";
 import { UserMessage } from "@/components/llm/message";
-import CryptoPriceCard from "@/components/price";
+import CryptoPriceCard from "@/components/llm/price";
 
 const chatSchema = z.object({
   message: z.string().min(1, "Message is required"),

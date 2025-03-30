@@ -1,13 +1,13 @@
-// import { ArrowDownIcon, ArrowUpIcon } from "lucide-react";
+// import { ArrowDownIcon, ArrowUpIcon } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { formatPrice } from "@/lib/format-price";
 
 interface CryptoPriceCardProps {
-  symbol: string;
-  price: number;
-  closeDate: Date;
-  delta: number;
+  symbol?: string;
+  price?: number;
+  closeDate?: Date;
+  delta?: number;
 }
 
 export default function CryptoPriceCard({
