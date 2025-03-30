@@ -10,6 +10,7 @@ import { Loader2 } from "lucide-react";
 import { z } from "zod";
 
 import KrakenClient from "kraken-api";
+import { sleep } from "@/lib/utils";
 
 const kraken = new KrakenClient(env.KRAKEN_API_KEY, env.KRAKEN_API_SECRET);
 
@@ -88,6 +89,37 @@ export const sendMessage = async (
         generate: async function* ({ symbol }: { symbol: string }) {
           console.log({ symbol });
           yield <BotCard>Loading...</BotCard>;
+
+          const url = `https://api.kraken.com/0/public/Ticker?pair=${symbol}USDT`;
+          const response = await fetch(url);
+          const data = await response.json();
+
+          // Extract the result for the specific symbol
+          const pairKey = Object.keys(data.result)[0]; // Kraken nests data under a dynamic key
+          const pairData = data.result[pairKey];
+
+          // Parse the last price and opening price
+          const lastPrice = Number(pairData.c[0]); // 'c' is the last trade closed price
+          const openingPrice = Number(pairData.o); // 'o' is the opening price
+          const delta = (lastPrice - openingPrice).toFixed(2);
+
+          await sleep(1000);
+
+          // Update the history with the result
+          history.done([
+            ...history.get(),
+            {
+              role: "assistant",
+              name: "get_crypto_price",
+              content: `[Price of ${symbol} = ${lastPrice}]`,
+            },
+          ]);
+
+          return (
+            <BotCard>
+              {lastPrice}, {delta}
+            </BotCard>
+          );
 
           return null;
         },
