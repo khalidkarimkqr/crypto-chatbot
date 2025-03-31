@@ -14,18 +14,17 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function CryptoStats() {
   return (
     <Card className="w-full max-w-4xl mx-auto overflow-hidden border-0 shadow-lg bg-gradient-to-br from-background to-muted/50">
+      {/* Card Header */}
       <CardHeader className="pb-4">
         <div>
+          {/* Name Placeholder */}
           <CardTitle className="text-3xl font-bold flex items-center gap-2">
-            <Skeleton className="h-9 w-32" />
-            <Skeleton className="h-6 w-16" />
+            <Skeleton className="h-9 w-32" /> {/* Name */}
           </CardTitle>
-          <div className="mt-1">
-            <Skeleton className="h-8 w-36" />
-          </div>
         </div>
       </CardHeader>
 
+      {/* Card Content */}
       <CardContent className="p-6">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {/* Rank */}
@@ -35,7 +34,7 @@ export default function CryptoStats() {
               <span>Rank</span>
             </div>
             <div className="text-xl font-semibold">
-              <Skeleton className="h-7 w-12" />
+              <Skeleton className="h-7 w-12" /> {/* Rank */}
             </div>
           </div>
 
@@ -49,10 +48,11 @@ export default function CryptoStats() {
             </div>
             <div className="flex items-center justify-between">
               <div className="text-xl font-semibold">
-                <Skeleton className="h-7 w-24" />
+                <Skeleton className="h-7 w-24" /> {/* Volume */}
               </div>
               <div className="flex items-center gap-1 text-sm font-medium">
-                <Skeleton className="h-5 w-16" />
+                <Skeleton className="h-5 w-16" />{" "}
+                {/* Volume Change Percentage */}
               </div>
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function CryptoStats() {
               <span>Market Cap</span>
             </div>
             <div className="text-xl font-semibold">
-              <Skeleton className="h-7 w-28" />
+              <Skeleton className="h-7 w-28" /> {/* Market Cap */}
             </div>
           </div>
 
@@ -75,7 +75,7 @@ export default function CryptoStats() {
               <span>Total Supply</span>
             </div>
             <div className="text-xl font-semibold">
-              <Skeleton className="h-7 w-32" />
+              <Skeleton className="h-7 w-32" /> {/* Total Supply */}
             </div>
           </div>
 
@@ -86,7 +86,7 @@ export default function CryptoStats() {
               <span>Dominance</span>
             </div>
             <div className="text-xl font-semibold">
-              <Skeleton className="h-7 w-16" />
+              <Skeleton className="h-7 w-16" /> {/* Dominance */}
             </div>
           </div>
         </div>
