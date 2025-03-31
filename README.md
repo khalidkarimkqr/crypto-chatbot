@@ -18,11 +18,11 @@
 
 | Component          | Technology               |
 |--------------------|--------------------------|
-| Framework          | Next.js 14 (App Router)  |
+| Framework          | React, Next.js 14 (App Router)|
 | AI Engine          | Vercel AI SDK + GPT-4    |
-| APIs               | Kraken, CoinMarketCap    |
+| APIs               | Kraken, CoinMarketCap, OpenAI |
 | Styling            | Tailwind CSS + shadcn/ui |
-| Package Manager    | Bun (or npm)             |
+| Package Manager    | Bun (got bored of npm)    |
 
 ## 🖥 Local Setup
 
