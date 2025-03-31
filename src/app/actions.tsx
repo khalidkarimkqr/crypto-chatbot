@@ -145,7 +145,24 @@ export const sendMessage = async (
               "The name of the cryptocurrency in lowercase. e.g. bitcoin/ethereum/solana."
             ),
         }),
+        generate: async function* ({ slug }: { slug: string; }) {
+          yield (
+            <BotCard>
+              Loading...
+            </BotCard>
+          );
+
+          const url = new URL("https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail");
+
+          url.searchParams.append("slug", slug);
+          url.searchParams.append("limit", "1");
+          url.searchParams.append("sortBy", "market_cap");
+
+          
+
+          const
       },
+      
     },
   });
 
