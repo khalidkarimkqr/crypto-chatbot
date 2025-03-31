@@ -11,6 +11,7 @@ export const env = createEnv({
     OPENAI_API_KEY: z.string(),
     KRAKEN_API_KEY: z.string(),
     KRAKEN_API_SECRET: z.string(),
+    CMC_API_KEY: z.string(),
   },
   /*
    * Environment variables available on the client (and server).
@@ -28,5 +29,6 @@ export const env = createEnv({
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     KRAKEN_API_KEY: process.env.KRAKEN_API_KEY,
     KRAKEN_API_SECRET: process.env.KRAKEN_API_SECRET,
+    CMC_API_KEY: process.env.CMC_API_KEY,
   },
 });
