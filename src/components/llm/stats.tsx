@@ -14,8 +14,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface CryptoStatsProps {
   name?: string;
-  symbol?: string;
-  price?: number;
   volume?: number;
   volumeChangePercentage?: number;
   rank?: number;
@@ -26,8 +24,6 @@ interface CryptoStatsProps {
 
 export default function CryptoStats({
   name = "Bitcoin",
-  symbol = "ETH",
-  price = 68432.51,
   volume = 28654321098,
   volumeChangePercentage = 5.23,
   rank = 1,
@@ -56,15 +52,7 @@ export default function CryptoStats({
     <Card className="w-full max-w-4xl mx-auto overflow-hidden border-0 shadow-lg bg-gradient-to-br from-background to-muted/50">
       <CardHeader className="pb-4">
         <div>
-          <CardTitle className="text-3xl font-bold flex items-center gap-2">
-            {name}{" "}
-            <span className="text-muted-foreground text-lg font-normal">
-              {symbol}
-            </span>
-          </CardTitle>
-          <div className="text-2xl font-semibold mt-1">
-            {formatNumber(price)}
-          </div>
+          <CardTitle className="text-3xl font-bold">{name}</CardTitle>
         </div>
       </CardHeader>
 
@@ -126,7 +114,7 @@ export default function CryptoStats({
               <span>Total Supply</span>
             </div>
             <div className="text-xl font-semibold">
-              {formatSupply(totalSupply)} {symbol}
+              {formatSupply(totalSupply)}
             </div>
           </div>
 
