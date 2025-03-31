@@ -145,15 +145,14 @@ export const sendMessage = async (
               "The name of the cryptocurrency in lowercase. e.g. bitcoin/ethereum/solana."
             ),
         }),
-        generate: async function* ({ slug }: { slug: string; }) {
-          yield (
-            <BotCard>
-              Loading...
-            </BotCard>
+        generate: async function* ({ slug }: { slug: string }) {
+          yield <BotCard>Loading...</BotCard>;
+
+          const url = new URL(
+            "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail"
           );
 
-          const url = new URL("https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail");
-
+          // set the query params which are required
           url.searchParams.append("slug", slug);
           url.searchParams.append("limit", "1");
           url.searchParams.append("sortBy", "market_cap");
@@ -161,10 +160,10 @@ export const sendMessage = async (
           const response = await fetch(url, {
             headers: {
               Accept: "application/json",
-              "Content-Type":"application/json",
+              "Content-Type": "application/json",
               "X-CMC_PRO_API_KEY": env.CMC_API_KEY,
-            }
-          })
+            },
+          });
 
           if (!response.ok) {
             history.done([
@@ -178,7 +177,7 @@ export const sendMessage = async (
             return <BotMessage>Crypto not found!</BotMessage>;
           }
 
-          const res = await response.json() as {
+          const res = (await response.json()) as {
             data: {
               id: number;
               name: string;
@@ -190,10 +189,40 @@ export const sendMessage = async (
                 totalSupply: number;
                 marketCap: number;
                 marketCapDominance: number;
-              },
+              };
             };
+          };
+          const data = res.data;
+          const stats = res.data.statistics;
+
+          const marketStats = {
+            name: data.name,
+            volume: data.volume,
+            volumeChangePercentage24h: data.volumeChangePercentage24h,
+            rank: stats.rank,
+            marketCap: stats.marketCap,
+            totalSupply: stats.totalSupply,
+            dominance: stats.marketCapDominance,
+          };
+
+          await sleep(1000);
+
+          history.done([
+            ...history.get(),
+            {
+              role: "assistant",
+              name: "get_crypto_stats",
+              content: `[Stats of ${data.symbol}]`,
+            },
+          ]);
+
+          return (
+            <BotCard>
+              {<pre>{JSON.stringify(marketStats, null, 2)}</pre>}
+            </BotCard>
+          );
+        },
       },
-      
     },
   });
 
