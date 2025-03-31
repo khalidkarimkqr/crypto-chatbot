@@ -158,9 +158,40 @@ export const sendMessage = async (
           url.searchParams.append("limit", "1");
           url.searchParams.append("sortBy", "market_cap");
 
-          
+          const response = await fetch(url, {
+            headers: {
+              Accept: "application/json",
+              "Content-Type":"application/json",
+              "X-CMC_PRO_API_KEY": env.CMC_API_KEY,
+            }
+          })
 
-          const
+          if (!response.ok) {
+            history.done([
+              ...history.get(),
+              {
+                role: "assistant",
+                name: "get_crypto_stats",
+                content: `Crypto not found`,
+              },
+            ]);
+            return <BotMessage>Crypto not found!</BotMessage>;
+          }
+
+          const res = await response.json() as {
+            data: {
+              id: number;
+              name: string;
+              symbol: string;
+              volume: number;
+              volumeChangePercentage24h: number;
+              statistics: {
+                rank: number;
+                totalSupply: number;
+                marketCap: number;
+                marketCapDominance: number;
+              },
+            };
       },
       
     },
@@ -175,7 +206,7 @@ export const sendMessage = async (
 
 export type AIState = Array<{
   id?: number;
-  name?: "get_crypto_price" | "get_cryto_stats";
+  name?: "get_crypto_price" | "get_crypto_stats";
   role: "user" | "assistant" | "system";
   content: string;
 }>;
