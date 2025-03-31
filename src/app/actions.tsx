@@ -13,7 +13,8 @@ import KrakenClient from "kraken-api";
 import { sleep } from "@/lib/utils";
 import CryptoPriceCard from "@/components/llm/price";
 import PriceSkeleton from "@/components/llm/price-skeleton";
-import Stats from "@/components/llm/stats";
+import CryptoStats from "@/components/llm/stats";
+import StatsSkeleton from "@/components/llm/stats-skeleton";
 
 const kraken = new KrakenClient(env.KRAKEN_API_KEY, env.KRAKEN_API_SECRET);
 
@@ -219,7 +220,7 @@ export const sendMessage = async (
 
           return (
             <BotCard>
-              <Stats {...marketStats} />
+              <CryptoStats {...marketStats} />
             </BotCard>
           );
         },
