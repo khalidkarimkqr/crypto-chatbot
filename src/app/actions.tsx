@@ -148,7 +148,11 @@ export const sendMessage = async (
             ),
         }),
         generate: async function* ({ slug }: { slug: string }) {
-          yield <BotCard>Loading...</BotCard>;
+          yield (
+            <BotCard>
+              <StatsSkeleton name={slug} />
+            </BotCard>
+          );
 
           const url = new URL(
             "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/detail"
