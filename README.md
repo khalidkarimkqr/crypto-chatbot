@@ -2,13 +2,16 @@
 
 CryptoChat combines the power of AI with real-time crypto market data to create a seamless, intelligent crypto companion. Whether you're a seasoned trader or crypto curious, CryptoChat provides instant access to market insights, price trends, and expert-level answers to all your crypto questions.
 
-![Screenshot](images/screenshot1.png)  
-![Screenshot](images/screenshot2.png)
+<div align="center">
+  <img src="images/screenshot1.png" width="45%" alt="Chat interface" />
+  <img src="images/screenshot2.png" width="45%" alt="Price analytics" />
+</div>
 
-_Live demo: [cryptochatbot](https://cryptochatbot.vercel.app)_
+_Live demo: [cryptochatbot.vercel.app](https://cryptochatbot.vercel.app)_
 
-![Demo GIF](gifs/walkthrough_cryptochatbot.gif)  
-_Real-time price lookup and market stats_
+<div align="center">
+  <img src="gifs/walkthrough_cryptochatbot.gif" width="70%" alt="Demo walkthrough" />
+</div>
 
 ## ✨ Features
 
