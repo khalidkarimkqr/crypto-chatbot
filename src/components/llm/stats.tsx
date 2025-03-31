@@ -26,7 +26,7 @@ interface CryptoStatsProps {
 
 export default function CryptoStats({
   name = "Bitcoin",
-  symbol = "BTC",
+  symbol = "ETH",
   price = 68432.51,
   volume = 28654321098,
   volumeChangePercentage = 5.23,
