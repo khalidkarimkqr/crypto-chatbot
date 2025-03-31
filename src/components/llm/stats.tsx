@@ -13,15 +13,15 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface CryptoStatsProps {
-  name: string;
-  symbol: string;
-  price: number;
-  volume: number;
-  volumeChangePercentage: number;
-  rank: number;
-  marketCap: number;
-  totalSupply: number;
-  dominance: number;
+  name?: string;
+  symbol?: string;
+  price?: number;
+  volume?: number;
+  volumeChangePercentage?: number;
+  rank?: number;
+  marketCap?: number;
+  totalSupply?: number;
+  dominance?: number;
 }
 
 export default function CryptoStats({
