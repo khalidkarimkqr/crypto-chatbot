@@ -1,4 +1,4 @@
-# 🚀 Crypto Chatbot - AI-Powered Crypto Assistant
+# 🚀 Crypto Companion - AI-Powered Crypto Assistant
 
 CryptoChat combines the power of AI with real-time crypto market data to create a seamless, intelligent crypto companion. Whether you're a seasoned trader or crypto curious, CryptoChat provides instant access to market insights, price trends, and expert-level answers to all your crypto questions.
 
