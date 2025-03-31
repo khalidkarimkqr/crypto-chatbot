@@ -1,12 +1,12 @@
-# 🚀 Crypto Companion - AI-Powered Crypto Assistant
+# 🚀 Crypto Chatbot - AI-Powered Crypto Assistant
 
 CryptoChat combines the power of AI with real-time crypto market data to create a seamless, intelligent crypto companion. Whether you're a seasoned trader or crypto curious, CryptoChat provides instant access to market insights, price trends, and expert-level answers to all your crypto questions.
 
 ![Screenshot](./screenshot.png)  
-*Live demo: [cryptochatbot.vercel.app](https://cryptochatbot.vercel.app)*
+_Live demo: [cryptochatbot.vercel.app](https://cryptochatbot.vercel.app)_
 
-![Demo GIF](./demo.gif)  
-*Real-time price lookup and market stats*
+![Demo GIF](.gifs/walkthrough_cryptochatbot.gif)  
+_Real-time price lookup and market stats_
 
 ## ✨ Features
 
@@ -18,17 +18,18 @@ CryptoChat combines the power of AI with real-time crypto market data to create 
 
 ## 🛠 Tech Stack
 
-| Component          | Technology               |
-|--------------------|--------------------------|
-| Framework          | React, Next.js 14 (App Router)|
-| AI Engine          | Vercel AI SDK + GPT-4    |
-| APIs               | Kraken, CoinMarketCap, OpenAI |
-| Styling            | Tailwind CSS + shadcn/ui |
-| Package Manager    | Bun (got bored of npm)    |
+| Component       | Technology                     |
+| --------------- | ------------------------------ |
+| Framework       | React, Next.js 14 (App Router) |
+| AI Engine       | Vercel AI SDK + GPT-4          |
+| APIs            | Kraken, CoinMarketCap, OpenAI  |
+| Styling         | Tailwind CSS + shadcn/ui       |
+| Package Manager | Bun (got bored of npm)         |
 
 ## 🖥 Local Setup
 
 ### Prerequisites
+
 - Node.js ≥18.x
 - [Bun](https://bun.sh/) (recommended) or npm
 - API keys:
@@ -39,7 +40,7 @@ CryptoChat combines the power of AI with real-time crypto market data to create 
 ### Installation
 
 1. **Fork this repo** (top-right button)  
-   *or*  
+   _or_  
    Clone directly:
    ```bash
    git clone https://github.com/your-username/crypto-chatbot.git
