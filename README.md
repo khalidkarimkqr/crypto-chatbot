@@ -20,16 +20,11 @@ CryptoChat combines the power of AI with real-time crypto market data to create 
 | Styling         | Tailwind CSS + shadcn/ui       |
 | Package Manager | Bun (got bored of npm)         |
 
-## Screenshots
+## 💻 Live Demo
 
-<div align="center">
-  <img src="images/screenshot1.png" width="45%" alt="Chat interface" />
-  <img src="images/screenshot2.png" width="45%" alt="Price analytics" />
-</div>
+[cryptochatbot.vercel.app](https://cryptochatbot.vercel.app)\_
 
-_Live demo: [cryptochatbot.vercel.app](https://cryptochatbot.vercel.app)_
-
-## Walkthrough vid
+## 🎥 Walkthrough vid
 
 <div align="center">
   <img src="gifs/walkthrough_cryptochatbot.gif" width="70%" alt="Demo walkthrough" />
