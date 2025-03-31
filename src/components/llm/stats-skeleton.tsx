@@ -11,7 +11,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function StatsSkeleton({ name = "Bitcoin" }: { name: string }) {
+export default function StatsSkeleton({ name = "Bitcoin" }: { name?: string }) {
   return (
     <Card className="w-full max-w-4xl mx-auto overflow-hidden border-0 shadow-lg bg-gradient-to-br from-background to-muted/50">
       {/* Card Header */}
@@ -27,9 +27,11 @@ export default function StatsSkeleton({ name = "Bitcoin" }: { name: string }) {
           <div className="bg-muted/30 p-4 rounded-lg">
             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
               <Hash className="w-4 h-4" />
-              <span>Rank</span>
+              <Skeleton className="h-4 w-16" /> {/* Rank Label */}
             </div>
-            <div className="text-xl font-semibold">#{rank}</div>
+            <div className="text-xl font-semibold">
+              <Skeleton className="h-7 w-12" /> {/* Rank Value */}
+            </div>
           </div>
 
           {/* Volume */}

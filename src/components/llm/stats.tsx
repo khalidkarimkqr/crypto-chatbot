@@ -64,7 +64,7 @@ export default function CryptoStats({
               <Hash className="w-4 h-4" />
               <span>Rank</span>
             </div>
-            <div className="text-xl font-semibold">#{rank}</div>
+            <div className="text-xl font-semibold">{rank}</div>
           </div>
 
           {/* Volume */}
