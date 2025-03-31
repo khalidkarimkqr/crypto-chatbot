@@ -141,7 +141,9 @@ export const sendMessage = async (
         parameters: z.object({
           slug: z
             .string()
-            .describe("The name of the cryptocurrency in lowercase. "),
+            .describe(
+              "The name of the cryptocurrency in lowercase. e.g. bitcoin/ethereum/solana."
+            ),
         }),
       },
     },
